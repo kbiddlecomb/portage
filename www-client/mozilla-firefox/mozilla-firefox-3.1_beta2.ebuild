@@ -7,7 +7,7 @@ RESTRICT="mirror"
 inherit flag-o-matic toolchain-funcs eutils mozconfig-3 makeedit multilib fdo-mime autotools mozextension
 PATCH="${P}-patches-0.1"
 
-LANGS="be ca cs de eo en-US es-AR es-ES eu fi fr fy-NL ga-IE he hi-IN hu id it ja ko lt nb-NO nl nn-NO pa-IN pl pt-BR pt-PT ro ru si sk sv-SE uk zh-CN zh-TW"
+LANGS="be ca cs de eo en-GB en-US es-AR es-ES eu fi fr fy-NL ga-IE he hi-IN hu id it ja ko lt nb-NO nl nn-NO pa-IN pl pt-BR pt-PT ro ru si sk sv-SE uk zh-CN zh-TW"
 NOSHORTLANGS="es-AR pt-BR zh-CN"
 
 MY_PV="${PV/3/}"
