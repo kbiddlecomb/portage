@@ -160,4 +160,16 @@ src_install() {
 	    java-pkg_dojar "${D}"${MOZILLA_FIVE_HOME}/javaxpcom.jar
 	    rm -f "${D}"${MOZILLA_FIVE_HOME}/javaxpcom.jar
 	fi
+
+	einfo "Registering xulrunner"
+	insinto /etc/gre.d
+	newins "${FILESDIR}"/${PN}.conf ${PV}.conf
+	sed -i -e \
+		"s|version|${PV}|
+			s|instpath|${MOZILLA_FIVE_HOME}|" \
+		"${D}"/etc/gre.d/${PV}.conf
+
+	einfo "Installing pkgconfig files"
+	insinto /usr/"$(get_libdir)"/pkgconfig
+	doins "${S}"/xulrunner/installer/*.pc
 }

@@ -288,6 +288,15 @@ EOF
 			>> "${D}"${MOZILLA_FIVE_HOME}/defaults/pref/vendor.js
 	fi
 
+	einfo "Installing includes and idl files"
+	cp -LfR "${S}"/dist/include "${D}"/"${MOZILLA_FIVE_HOME}" || die "cp failed"
+	cp -LfR "${S}"/dist/idl "${D}"/"${MOZILLA_FIVE_HOME}" || die "cp failed"
+
+	einfo "Installing prefs"
+	insinto "${MOZILLA_FIVE_HOME}"/greprefs
+	newins "${FILESDIR}"/gentoo-default-prefs.js all-gentoo.js
+	insinto "${MOZILLA_FIVE_HOME}"/defaults/pref
+	newins "${FILESDIR}"/gentoo-default-prefs.js all-gentoo.js
 }
 
 pkg_postinst() {
