@@ -15,8 +15,7 @@ IUSE="doc"
 
 RDEPEND=">=x11-libs/gtk+-2.6
 		>=dev-libs/glib-2.6
-		>=dev-libs/dbus-glib-0.76
-		|| ( x11-misc/notification-daemon x11-misc/notification-daemon-xfce )"
+		>=dev-libs/dbus-glib-0.76"
 DEPEND="${RDEPEND}
 		doc? ( >=dev-util/gtk-doc-1.4 )"
 

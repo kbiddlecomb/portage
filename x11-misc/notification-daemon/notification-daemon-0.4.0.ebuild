@@ -22,6 +22,7 @@ RDEPEND=">=dev-libs/glib-2.4.0
 		 >=dev-libs/dbus-glib-0.71
 		 x11-libs/libwnck
 		 >=gnome-base/libglade-2
+		 >=x11-libs/libnotify-0.4.4
 		 gstreamer? ( >=media-libs/gstreamer-0.10 )"
 DEPEND="${RDEPEND}
 		>=sys-devel/gettext-0.14
