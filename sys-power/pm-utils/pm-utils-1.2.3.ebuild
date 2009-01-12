@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/pm-utils/pm-utils-1.2.3.ebuild,v 1.1 2008/12/10 18:57:42 darkside Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/pm-utils/pm-utils-1.2.3.ebuild,v 1.3 2009/01/09 19:47:54 josejx Exp $
 
 DESCRIPTION="Suspend and hibernation utilties for HAL"
 HOMEPAGE="http://pm-utils.freedesktop.org/"
@@ -8,8 +8,8 @@ SRC_URI="http://pm-utils.freedesktop.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="debug networkmanager ntp video_cards_intel video_cards_radeon"
+KEYWORDS="~amd64 ~ppc ~x86"
+IUSE="alsa debug networkmanager ntp video_cards_intel video_cards_radeon"
 
 RDEPEND=">=sys-apps/hal-0.5.10
 		 >=sys-apps/dbus-1.0.0
@@ -18,8 +18,10 @@ RDEPEND=">=sys-apps/hal-0.5.10
 		 alsa? ( media-sound/alsa-utils )
 		 networkmanager? ( net-misc/networkmanager )
 		 ntp? ( net-misc/ntp )
-		 !video_cards_intel? ( sys-apps/vbetool )
-		 video_cards_radeon? ( app-laptop/radeontool )"
+		 !ppc? (
+			 !video_cards_intel? ( sys-apps/vbetool )
+			 video_cards_radeon? ( app-laptop/radeontool )
+		 )"
 DEPEND="!sys-power/powermgmt-base
 		app-text/xmlto"
 

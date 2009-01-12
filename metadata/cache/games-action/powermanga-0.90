@@ -1,5 +1,5 @@
->=media-libs/libsdl-0.11.0 media-libs/sdl-mixer
->=media-libs/libsdl-0.11.0 media-libs/sdl-mixer
+>=media-libs/libsdl-0.11.0 media-libs/sdl-mixer[mikmod]
+>=media-libs/libsdl-0.11.0 media-libs/sdl-mixer[mikmod]
 0
 http://linux.tlk.fr/games/Powermanga/download/powermanga-0.90.tgz
 
@@ -7,14 +7,14 @@ http://linux.tlk.fr/
 GPL-3
 An arcade 2D shoot-em-up game
 amd64 ppc x86
-multilib toolchain-funcs games portability eutils
+toolchain-funcs portability multilib base games eutils
 
 
 
 
-0
+2
 
-compile install postinst preinst setup unpack
+compile configure install postinst preinst prepare setup unpack
 
 
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/enlightenment/enlightenment-0.16.8.14.ebuild,v 1.7 2008/09/29 01:36:53 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/enlightenment/enlightenment-0.16.8.14.ebuild,v 1.9 2009/01/09 15:01:11 remi Exp $
 
 inherit eutils
 
@@ -24,7 +24,7 @@ RDEPEND="esd? ( >=media-sound/esound-0.2.19 )
 	x11-libs/libXfixes
 	x11-libs/libXdamage
 	x11-libs/libXxf86vm
-	virtual/xft
+	x11-libs/libXft
 	xrandr? ( x11-libs/libXrandr )
 	x11-libs/libXrender
 	x11-misc/xbitmaps
@@ -67,6 +67,6 @@ src_compile() {
 src_install() {
 	emake install DESTDIR="${D}" || die
 	exeinto /etc/X11/Sessions
-	newexe "${FILESDIR}"/e16 enlightenment
+	newexe "${FILESDIR}"/e16 e16
 	dodoc AUTHORS ChangeLog COMPLIANCE README* docs/README* TODO
 }

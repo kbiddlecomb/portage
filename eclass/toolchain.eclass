@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/toolchain.eclass,v 1.371 2008/12/29 22:46:32 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/toolchain.eclass,v 1.380 2009/01/10 12:53:50 vapier Exp $
 #
 # Maintainer: Toolchain Ninjas <toolchain@gentoo.org>
 
@@ -334,7 +334,7 @@ get_gcc_src_uri() {
 
 	# gcc minispec for the hardened gcc 4 compiler
         [[ -n ${SPECS_VER} ]] && \
-                GCC_SRC_URI="${GCC_SRC_URI} !nopie? ( $(gentoo_urls gcc-${SPECS_GCC_VER}-default-specs-${SPECS_VER}.tar.bz2) )"
+                GCC_SRC_URI="${GCC_SRC_URI} !nopie? ( $(gentoo_urls gcc-${SPECS_GCC_VER}-specs-${SPECS_VER}.tar.bz2) )"
 
 	# gcc bounds checking patch
 	if [[ -n ${HTB_VER} ]] ; then
@@ -709,7 +709,7 @@ setup_minispecs_gcc_build_specs() {
 		if hardened_gcc_works pie ; then
         		cat "${WORKDIR}"/specs/pie.specs >> "${WORKDIR}"/build.specs
 		fi
-		for s in nostrict znow zrelro; do
+		for s in nostrict znow; do
 			cat "${WORKDIR}"/specs/${s}.specs >> "${WORKDIR}"/build.specs
 		done
 		export GCC_SPECS="${WORKDIR}"/build.specs
@@ -1056,15 +1056,6 @@ do_gcc_rename_java_bins() {
 			die "Failed to fixup file ${jfile} for rename to grmic"
 	done
 }
-unbreak_arm() {
-	[[ ${CTARGET} == *eabi* ]] || return
-	[[ ${CTARGET} == arm* ]] || return
-	[[ ${CTARGET} == armv5* ]] && return
-	[[ -e "${S}"/gcc/config/arm/linux-eabi.h ]] || return
-	#armv4tl can do ebai as well. http://www.nabble.com/Re:--crosstool-ng--ARM-EABI-problem-p17164547.html
-	#http://sourceware.org/ml/crossgcc/2008-05/msg00009.html
-	sed -i -e s/'define SUBTARGET_CPU_DEFAULT TARGET_CPU_arm10tdmi'/'define SUBTARGET_CPU_DEFAULT TARGET_CPU_arm9tdmi'/g "${S}"/gcc/config/arm/linux-eabi.h
-}
 gcc_src_unpack() {
 	export BRANDING_GCC_PKGVERSION="Gentoo ${GCC_PVR}"
 
@@ -1091,6 +1082,7 @@ gcc_src_unpack() {
 	do_gcc_HTB_patches
 	do_gcc_SSP_patches
 	do_gcc_PIE_patches
+	do_gcc_USER_patches
 
 	${ETYPE}_src_unpack || die "failed to ${ETYPE}_src_unpack"
 
@@ -1119,11 +1111,6 @@ gcc_src_unpack() {
 		fi
 	fi
 
-	# Misdesign in libstdc++ (Redhat)
-	if [[ ${GCCMAJOR} -ge 3 ]] && [[ -e ${S}/libstdc++-v3/config/cpu/i486/atomicity.h ]] ; then
-		cp -pPR "${S}"/libstdc++-v3/config/cpu/i{4,3}86/atomicity.h
-	fi
-
 	# >= gcc-4.3 doesn't bundle ecj.jar, so copy it
 	if [[ ${GCCMAJOR}.${GCCMINOR} > 4.2 ]] &&
 		use gcj ; then
@@ -1147,8 +1134,6 @@ gcc_src_unpack() {
 	then
 		do_gcc_rename_java_bins
 	fi
-
-	unbreak_arm
 
 	# Fixup libtool to correctly generate .la files with portage
 	cd "${S}"
@@ -1655,7 +1640,7 @@ gcc_src_compile() {
 
 gcc_src_test() {
 	cd "${WORKDIR}"/build
-	make -k check || ewarn "check failed and that sucks :("
+	emake -j1 -k check || ewarn "check failed and that sucks :("
 }
 
 gcc-library_src_install() {
@@ -2014,7 +1999,7 @@ gcc_quick_unpack() {
 			unpack gcc-${PIE_GCC_VER}-piepatches-v${PIE_VER}.tar.bz2
 		fi
 		[[ -n ${SPECS_VER} ]] && \
-			unpack gcc-${SPECS_GCC_VER}-default-specs-${SPECS_VER}.tar.bz2
+			unpack gcc-${SPECS_GCC_VER}-specs-${SPECS_VER}.tar.bz2
 	fi
 
 	want_boundschecking && \
@@ -2059,6 +2044,22 @@ do_gcc_stub() {
 			EPATCH_SINGLE_MSG="Applying stub patch for $1 ..." \
 			epatch "${stub_patch}"
 			return 0
+		fi
+	done
+}
+
+do_gcc_USER_patches() {
+	local check base=${PORTAGE_CONFIGROOT}/etc/portage/patches
+	for check in {${CATEGORY}/${PF},${CATEGORY}/${P},${CATEGORY}/${PN}}; do
+		EPATCH_SOURCE=${base}/${CTARGET}/${check}
+		[[ -r ${EPATCH_SOURCE} ]] || EPATCH_SOURCE=${base}/${CHOST}/${check}
+		[[ -r ${EPATCH_SOURCE} ]] || EPATCH_SOURCE=${base}/${check}
+		if [[ -d ${EPATCH_SOURCE} ]] ; then
+			EPATCH_SUFFIX="patch"
+			EPATCH_FORCE="yes" \
+			EPATCH_MULTI_MSG="Applying user patches from ${EPATCH_SOURCE} ..." \
+			epatch
+			break
 		fi
 	done
 }

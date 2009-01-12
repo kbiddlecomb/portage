@@ -6,8 +6,8 @@ http://darklomax.org/tyrian/tyrian21.zip mirror://gentoo/opentyrian-20081211.tar
 http://code.google.com/p/opentyrian/
 GPL-2
 Open-source port of the DOS game Tyrian, vertical scrolling shooter
-~amd64
-multilib toolchain-funcs games portability eutils
+~amd64 ~ppc
+toolchain-funcs portability multilib base games eutils
 debug
 
 

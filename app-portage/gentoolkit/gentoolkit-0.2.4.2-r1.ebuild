@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/gentoolkit/gentoolkit-0.2.4.2-r1.ebuild,v 1.2 2008/12/07 12:00:13 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/gentoolkit/gentoolkit-0.2.4.2-r1.ebuild,v 1.9 2009/01/09 16:31:58 ranger Exp $
 
 EAPI=2
 
@@ -14,14 +14,13 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="userland_GNU"
 
-KEYWORDS="~alpha ~amd64 arm ~hppa ~ia64 m68k ~mips ~ppc ~ppc64 s390 sh ~sparc ~x86 -x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 -x86-fbsd"
 
 DEPEND=">=sys-apps/portage-2.1.1_pre1
 	>=dev-lang/python-2.0
 	>=dev-lang/perl-5.6
 	>=sys-apps/grep-2.4
 	userland_GNU? ( sys-apps/debianutils )"
-
 
 src_prepare() {
 	epatch "${FILESDIR}/equery-0.2.4.2_use_expanded.patch"

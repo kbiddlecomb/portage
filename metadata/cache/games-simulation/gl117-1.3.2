@@ -1,5 +1,5 @@
-media-libs/libsdl media-libs/sdl-mixer virtual/opengl virtual/glu virtual/glut
-media-libs/libsdl media-libs/sdl-mixer virtual/opengl virtual/glu virtual/glut
+media-libs/libsdl media-libs/sdl-mixer[mikmod] virtual/opengl virtual/glu virtual/glut
+media-libs/libsdl media-libs/sdl-mixer[mikmod] virtual/opengl virtual/glu virtual/glut
 0
 mirror://sourceforge/gl-117/gl-117-1.3.2-src.tar.bz2
 
@@ -7,14 +7,14 @@ http://www.heptargon.de/
 GPL-2
 An action flight simulator
 amd64 ppc x86
-multilib toolchain-funcs games portability eutils
+toolchain-funcs portability multilib base games eutils
 
 
 
 
-0
+2
 
-compile install postinst preinst setup
+compile configure install postinst preinst prepare setup unpack
 
 
 

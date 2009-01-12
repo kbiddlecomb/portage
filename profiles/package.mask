@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9349 2008/12/31 16:38:52 jmbsvicetto Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.9382 2009/01/11 12:23:33 ikelos Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -31,6 +31,258 @@
 
 #--- END OF EXAMPLES ---
 
+# Fabian Groffen <grobian@gentoo.org> (11 Jan 2009)
+# sidebar patch doesn't apply, hence sidebar USE-flag is broken.  If you
+# don't care about sidebar feel free to test and report.  Also, feel
+# free to notify me if a new sidebar patch was released (or you made a
+# patch that works).
+=mail-client/mutt-1.5.19
+
+# Tobias Scherbaum <dertobi123@gentoo.org> (11 Jan 2009)
+# bundles *very* outdated versions of gd, zlib and libpng libraries, static
+# links, upstream seems dead, removal in 30 days.
+# bug 247958 and bug #251425
+net-analyzer/rtg
+
+# Daniel Black <dragonheart@gentoo.org> (10 Jan 2009)
+# package masking to allow dependant packages to resolve
+# bug #253709
+>=net-libs/gnutls-2.7.0
+
+# mask pending removal
+# Benedikt Böhm <hollow@gentoo.org> (10 Jan 2009)
+# baselayout-vserver is unmaintained and obsoleted by
+# baselayout-2/openrc. please upgrade. removal in 30 days.
+sys-apps/baselayout-vserver
+
+# Rémi Cardona <remi@gentoo.org> (09 Jan 2009)
+# old virtual left from the transition from monolithic
+# to modular X. Use x11-libs/libXft directly
+virtual/xft
+
+# Michael Sterrett <mr_bones_@gentoo.org> (09 Jan 2009)
+# missing a license file
+sys-block/hpacucli
+
+# Christoph Mende <angelos@gentoo.org> (07 Jan 2009)
+# Masked for removal in 30 days, this plugin has been integrated into gmpc
+media-plugins/gmpc-stopbutton
+
+# Daniel Gryniewicz <dang@gentoo.org> (07 Jan 2009)
+# Mask gnome-base/gnome-vfs-monikers for removal
+# REASON:
+# Nothing uses it anymore (gnome-vfs used to) and it's depricated. Bug #253826
+gnome-base/gnome-vfs-monikers
+
+# Tomas Chvatal <scarabeus@gentoo.org> (07 Jan 2009)
+# Mask kde-base/pykde-3.5* for removal
+# REASON:
+# broken and nobody seems to care for fix, also replacement as
+# dev-python/pykde can be used
+=kde-base/pykde-3.5*
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (05 Jan 2009)
+# masked for testing
+# http://www.vdr-portal.de/board/thread.php?threadid=74833 (german)
+=net-www/xxv-1.2.1383
+=x11-themes/xxv-skins-1.2.1383
+
+# Mike Auty <ikelos@gentoo.org> (03 Jan 2009)
+# Masking insecure versions
+# See bug 245941 for more details
+# Stable versions are not being masked, but should be really
+# 11-Jan-2009 Adding in x.5.0 series, since they're also vulnerable
+=app-emulation/vmware-workstation-5.5.8.108000
+=app-emulation/vmware-workstation-6.0.4.93057
+=app-emulation/vmware-workstation-6.0.5.109488
+=app-emulation/vmware-workstation-6.5.0.118166
+=app-emulation/vmware-player-1.0.8.108000
+=app-emulation/vmware-player-2.0.4.93057
+=app-emulation/vmware-player-2.0.5.109488
+=app-emulation/vmware-player-2.5.0.118166
+
+# Daniel Black <dragonheart@gentoo.org> (03 Jan 2009)
+# mask pending removal
+# compile faults as per bug #249291 and is now in linux mainstream
+# kernel
+app-crypt/tpm-module
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (03 Jan 2009)
+# These packages are not supposed to be merged directly, instead
+# please use sys-devel/crossdev to install them.
+dev-libs/cygwin
+dev-util/mingw-runtime
+dev-util/w32api
+
+# Thomas Sachau (Tommy[D]) <tommy@gentoo.org> (27 Dez 2008)
+# Mask ebuilds with masked dep
+x11-plugins/wmarpstar
+
+# Thomas Sachau (Tommy[D]) <tommy@gentoo.org> (27 Dez 2008)
+# Mask ebuilds with missing deps
+media-video/aegisub
+
+# Tiago Cunha (tcunha) <tcunha@gentoo.org> (10 Dec 2008)
+# Mask CVS ebuild
+=dev-util/tinyxml-9999
+
+# Thomas Sachau (Tommy[D]) <tommy@gentoo.org> (24 Aug 2008)
+# Mask SVN ebuild
+~media-gfx/leocad-9999
+
+# Tiago Cunha (tcunha) <me@tiagocunha.org> (06 Aug 2008)
+# Mask GIT ebuild
+=gnome-extra/guake-9999
+
+# Jack Miller (TheMoken) <jack@codezen.org> (05 Jul 2008)
+# Mask live ebuild
+~net-news/canto-9999
+
+# Chi-Thanh Christopher Nguyen (chithead) <chithanh@cs.tu-berlin.de> (19 Jun 2008)
+# Mask live ebuild
+=media-tv/em28xx-new-9999
+
+# Thomas Anderson (gentoofan23) <gentoofan23@gmail.com> (15 Jun 2008)
+# Mask live ebuild
+=app-misc/navit-9999
+
+# Geoff Clements (ContextSwitch) <geoff@electron.me.uk> (10 Jun 2008)
+# >=dev-db/dabo-0.8.4 now contains daboide
+# daboide will be deleted with next release of dabo
+=dev-db/daboide-0.7.1
+
+# Thomas Sachau (Tommy[D]) <tommy@gentoo.org> (30 Apr 2008)
+# Mask because of masked deps (>=evolution-2.22)
+=gnome-extra/evolution-rss-0.0.8
+
+# Tiago Cunha (tcunha) <me@tiagocunha.org> (27 Apr 2008)
+# Mask GIT ebuild
+=sys-apps/ksplice-9999
+
+# Thomas Sachau (Tommy[D]) <tommy@gentoo.org> (07 Apr 2008)
+# Mask live ebuild
+=sys-fs/aufs-utils-9999
+
+# Thomas Sachau (Tommy[D]) <tommy@gentoo.org> (07 Apr 2008)
+# Mask SVN ebuild
+~net-p2p/freenet-9999
+
+# Thomas Sachau (Tommy[D]) <tommy@gentoo.org> (20 Mar 2008)
+# Mask packages with masked deps
+=sci-libs/openfoam-kernel-1.4.1*
+=sci-libs/openfoam-meta-1.4.1*
+=sci-libs/openfoam-solvers-1.4.1*
+=sci-libs/openfoam-src-1.4.1*
+
+# Thomas Sachau (Tommy[D]) <tommy@gentoo.org> (20 Mar 2008)
+# Masked until they follow the ebuild conventions
+# (sed -> patch)
+=sci-libs/openfoam-bin-1.4.1*
+=sci-libs/openfoam-utilities-1.4.1*
+=sci-libs/openfoam-wmake-1.4.1*
+=sci-libs/openfoam-1.4.1*
+
+# Juan Aguado <juantxorena@gmail.com> (16 Mar 2008)
+# Masking SVN ebuild
+=media-video/aegisub-9999
+
+# Jakub Moc <jakub@gentoo.org> (16 Mar 2008)
+# svn version should be masked
+=net-misc/wolman-9999
+
+# Christoph Brill (egore) <egore@gmx.de> (16 Feb 2008)
+# Masking SVN ebuild
+=dev-libs/libwiimote-9999
+
+# Tommy[D] <tommy100@gmx.de> (15 Feb 2008)
+# Masking SVN ebuild
+=media-sound/ogreal-9999
+
+# Jakub Moc <jakub@gentoo.org> (24 Jan 2008)
+# Masking beta versions
+=app-misc/bsc-4.0.06_beta*
+
+# Jakub Moc <jakub@gentoo.org> (31 Oct 2007)
+# svn version should be masked
+=app-misc/freeme2-9999
+
+# Felix Bechstein <f@ub0r.de> (28 Oct 2007)
+# svn version should be masked
+=net-misc/ypd-9999
+
+# Jakub Moc <jakub@gentoo.org> (27 Oct 2007)
+# Broken license. Asked upstream to address it.
+#
+# Breaks media-video/ffmpeg (bug #197037)
+# because it installs precompiled junk to /usr/lib
+#
+media-tv/zattoo-bin
+
+# Felix Bechstein <f@ub0r.de> (22 Oct 2007)
+# svn version should be masked
+=media-sound/mtag-9999
+
+# Davide Cendron <scen@gentoo.org> (13 Jun 2007)
+# svn version should be masked
+=games-fps/chocolate-doom-9999
+
+# Davide Cendron <scen@gentoo.org> (12 Jun 2007)
+# cvs (snapshot) version should be masked
+games-fps/uhexen2-cvs
+
+# Davide Cendron <scen@gentoo.org> (07 Jun 2007)
+# svn version should be masked
+=games-fps/vavoom-9999
+
+# Ali Polatel <polatel@gmail.com> (15 April 2007)
+# live ebuilds should be masked
+=app-vim/clewn-9999
+
+# Christian Faulhammer <opfer@gentoo.org> (08 Mar 2007)
+# live ebuilds should be masked
+~dev-util/ticpp-9999
+
+# Eduard Warkentin <eduard.warkentin@gmx.de> (14 Feb 2007)
+# This is a svn checkout based ebuild until further changes
+~app-backup/darbackup-0.7.27
+
+# Christian Faulhammer <opfer@gentoo.org> (05 Feb 2007)
+# live ebuilds should be masked
+~media-sound/ncmpc-9999
+
+# Jakub Moc <jakub@gentoo.org> (22 Dec 2006)
+# upstream now distributes an RPM-only version
+# so the ebuild needs a major work :(
+app-antivirus/kav4fileservers
+
+# Jakub Moc <jakub@gentoo.org> (12 Dec 2006)
+# cvs version should be masked
+# Jakub Moc <jakub@gentoo.org> (23 Nov 2007)
+# mask the whole thing as it really does not work
+# ATM and upstream activity ceased - see Bug 156736
+app-portage/rep-rebuild
+
+# Jakub Moc <jakub@gentoo.org> (11 Dec 2006)
+# svn version should be masked
+=x11-misc/swarp-9999
+
+# Jakub Moc <jakub@gentoo.org> (11 Dec 2006)
+# svn version should be masked
+=app-misc/ssid-9999
+
+# Jakub Moc <jakub@gentoo.org> (31 Jul 2006)
+# masked as it needs testing with other virtual/blas providers
+# (blas-atlas, blas-reference, and acml)
+sci-mathematics/alberta
+
+# Patrick Zimmermann <patrick@zakweb.de> (28 Jun 2006)
+# Has dependencies that are masked
+games-fps/unreal-tournament-operationnapali
+
+# Jakub Moc <jakub@gentoo.org> (09 Jun 2006)
+# This is for testing only, upstream not active ATM
+=app-misc/mc-mp-4.1.40_pre9
+
 # Paul Varner <fuzzyray@gentoo.org> (31 Dec 2008)
 # Masked for testing of echangelog subversion/git support. Bug 176337
 =app-portage/gentoolkit-dev-0.2.6.9
@@ -39,10 +291,6 @@
 # Masked due to being broken with portage 2.1 and 2.2.
 # Users can use either the unstable versions or switch to app-portage/eix
 =app-portage/esearch-0.7.1
-
-# Ben de Groot <yngwin@gentoo.org> (31 Dec 2008)
-# Masked due to security issues, bug 251017, pending removal
-~media-video/mplayer-1.0_rc2_p27725
 
 # Torsten Veller <tove@gentoo.org> (29 Dec 2008)
 # Unmaintained net-mail packages
@@ -53,7 +301,6 @@ mail-client/xfmail
 mail-client/elm
 # 251383 - 29 Dec 2008
 net-mail/ezmlm
-net-mail/ezmlm-idx
 net-mail/ezmlm-idx-mysql
 net-mail/ezmlm-idx-pgsql
 
@@ -73,7 +320,7 @@ x11-misc/goats
 # Talk with the actual gstreamer team before unmasking these -
 # we are completely against the notion of monolithic versions, these
 # here should be considered an experimentation
->=media-libs/gstreamer-0.10.21-r2
+>=media-libs/gstreamer-0.10.21-r10
 >=media-libs/gst-plugins-good-0.10.11-r1
 >=media-libs/gst-plugins-bad-0.10.9-r1
 >=media-libs/gst-plugins-ugly-0.10.10-r1
@@ -121,6 +368,7 @@ net-misc/ossh
 # Removed in 60 days. Does not compile with gcc-4.3 and requires kernel patches
 # from a website that doesn't exist => unmaintained. bug 250679
 app-i18n/unicon
+app-i18n/chinput
 
 # Jeremy Olexa <darkside@gentoo.org> (20 Dec 2008)
 # Removed in 60 days. Does not work anymore, dead upstream. Upstream website
@@ -152,11 +400,6 @@ x11-libs/xfc
 # is not ready for stable ( bug 251566 ).
 # Upstream has abandoned it, alternatives such as gedit exist.
 app-editors/katoob
-
-# Daniel Drake <dsd@gentoo.org> (18 Dec 2008)
-# Unmaintained, unloved, and unwashed. Removing from Portage on on Dec 31st
-# (bug #193250 and others)
-net-misc/arpstar
 
 # Mike Pagano <mpagano@gentoo.org> (17 Dec 2008)
 # Masked waiting on >=portage-2.2* to be unmasked
@@ -245,28 +488,9 @@ net-analyzer/sysmon
 >=net-misc/networkmanager-pptp-0.7.0
 >=net-misc/networkmanager-openvpn-0.7.0
 
-# Bernard Cafarelli <voyageur@gentoo.org> (04 Dec 2008)
-# Masked for removal in 30 days (bug #249799)
-# * Upstream closed web site and source downloads
-# * No updates since first release 2 years ago
-# * Still based on old NX 1.5 code, missing features and being mostly
-# incompatible with current NX servers/clients
-# * Client does not compile with gcc4.3 or --as-needed (bug #248138).
-# * Server includes old, unpatched xorg sources, probably vulnerable to GLSA
-# 200710-09 and 200804-05.
-# * GPL alternatives exist: net-misc/qtnx, net-misc/nxserver-freenx
-net-misc/nxclient-2xterminalserver
-net-misc/nxserver-2xterminalserver
-
 # Tomas Chvatal <scarabeus@gentoo.org> (03 Dec 2008)
 # Betaversion, has cool stuff like plasmoid and so on
 =net-p2p/ktorrent-3.2*
-
-# Christian Faulhammer <fauli@gentoo.org> (02 Dec 2008)
-# Removal because it has been integrated into Claws Mail
-# Either use mail-client/claws-mail-3.6.1 (plain) or 3.6.1-r1
-# (USE=smime)
-mail-client/claws-mail-smime
 
 # Tobias Scherbaum <dertobi123@gentoo.org> (02 Dec 2008)
 # Mask because of broken upgrade path. Need to investigate what the real
@@ -284,11 +508,6 @@ mail-client/claws-mail-smime
 # upstream for quite some time now. bug #246891
 app-emulation/xcopilot
 
-# Jeremy Olexa <darkside@gentoo.org> (02 Dec 2008)
-# Removed in 30 days at maintainer's request. No interest and doesn't work with
-# newer gcc versions. bug #249308
-kde-misc/kio_perldoc
-
 # Ulrich Mueller <ulm@gentoo.org> (30 Nov 2008)
 # Depends on masked Emacs live CVS version; unmask after Emacs 23 release.
 app-emacs/emacs-daemon
@@ -298,24 +517,7 @@ app-emacs/emacs-daemon
 net-wireless/bluez
 >=net-wireless/bluez-gnome-1.8
 >=app-mobilephone/obex-data-server-0.4
-
-# Gilles Dartiguelongue <eva@gentoo.org> (27 Nov 2008)
-# masked because no dev can test it and no proxy maintainer
-# steped up in a year, see bug #181236
-net-misc/logjam
-
-# Gilles Dartiguelongue <eva@gentoo.org> (27 Nov 2008)
-# masked because no-one cares, and broken in many ways.
-# See bugs #187285, #147405, #233055, #205396.
-net-news/straw
-
-# Saleem Abdulrasool <compnerd@gentoo.org> (23 Nov 2007)
-# These might break automounting, so keep them masked for now.
-# Update by Gilles Dartiguelongue <eva@gentoo.org> (27 Nov 2008)
-# gnome-mount 0.8 doesn't depend on policykit.
-=gnome-base/gnome-mount-0.7
->=sys-auth/policykit-0.6
->=gnome-extra/policykit-gnome-0.6
+>=gnome-extra/gnome-user-share-0.41
 
 # Peter Alfredsen <loki_val@gentoo.org> (26 Nov 2008)
 # Mask non-working version to force their removal.
@@ -326,12 +528,18 @@ net-news/straw
 # bug #247677
 =net-libs/wvstreams-4.4.1
 
+# Saleem Abdulrasool <compnerd@gentoo.org> (23 Nov 2007)
+# These might break automounting, so keep them masked for now.
+# Update by Gilles Dartiguelongue <eva@gentoo.org> (27 Nov 2008)
+# gnome-mount 0.8 doesn't depend on policykit.
+=gnome-base/gnome-mount-0.7
+>=sys-auth/policykit-0.6
+>=gnome-extra/policykit-gnome-0.6
+
 # Peter Alfredsen <loki_val@gentoo.org> (22 Nov 2008)
 # Packages not building with mono-2
 # Masked for removal in 60 days.
-app-misc/gnutu
 app-pda/dopi
-media-sound/monopod
 
 # Jeremy Olexa <darkside@gentoo.org> (22 Nov 2008)
 # Masked for removal in 30 days, requested by maintainers. bug #173584
@@ -391,13 +599,6 @@ games-mud/ytin
 media-video/realplayer
 media-libs/amd64codecs
 media-libs/realcodecs
-
-# Jeremy Olexa <darkside@gentoo.org> (4 Nov 2008)
-# Masked for removal in 60 days by treecleaners. No maintainer, broken package.
-# Year old bug, dead upstream. old patchset to compiling tools. bug #245476
-# dev-lang/palmos-sdk depends on prc-tools, so that is to be removed as well.
-dev-lang/prc-tools
-dev-lang/palmos-sdk
 
 # Daniel Black <dragonheart@gentoo.org> (4 Nov 2008)
 # Legal problems #241650 causing distribution problems #245322 and build problems #237493
@@ -742,10 +943,6 @@ games-server/greenhouse
 =dev-haskell/regex-base-0.91
 =dev-haskell/regex-posix-0.92
 
-# Ulrich Mueller <ulm@gentoo.org> (27 Apr 2008)
-# CVS snapshot, bug 219449.
-~app-emacs/navi2ch-1.7.5_p20080325
-
 # Markus Ullmann <jokey@gentoo.org> (21 Apr 2008)
 # mask beta version
 =net-libs/gloox-1.0_beta*
@@ -783,20 +980,13 @@ media-sound/lastfmproxy
 
 # Raúl Porcel <armin76@gentoo.org> (8 Apr 2008)
 # Masked for testing
->=mail-client/mozilla-thunderbird-3.0_alpha1
+#>=mail-client/mozilla-thunderbird-3.0_alpha1
 >=mail-client/mozilla-thunderbird-bin-3.0_alpha1
 
 # Benedikt Böhm <hollow@gentoo.org> (6 Apr 2008)
 # Mask ebuilds using new qmail.eclass for testing
-=mail-mta/mini-qmail-1.06
 =mail-mta/netqmail-1.06
 =mail-mta/qmail-ldap-1.03-r8
-=net-mail/checkpassword-0.90-r3
-=net-mail/cmd5checkpw-0.30-r1
-=net-mail/dot-forward-0.71-r3
-=sys-apps/ucspi-ssl-0.70-r1
-=sys-apps/ucspi-tcp-0.88-r17
-=sys-process/daemontools-0.76-r6
 
 # Christian Faulhammer <fauli@gentoo.org> (01 Apr 2008)
 # Masked for security reasons: bug 215699
@@ -832,12 +1022,6 @@ media-sound/lastfmproxy
 # is unmasked or stabilized.
 net-p2p/limewire
 
-# Joerg Bornkessel <hd_brummy@gentoo.org> (11 Mar 2008)
-# masked for testing
-# http://www.vdr-portal.de/board/thread.php?threadid=74833 (german)
-=net-www/xxv-1.2.1308
-=net-www/xxv-1.2.1315
-
 # Colin Morey <peitolm@gentoo.org> (20 Mar 2008)
 # Masked for testing, closing lots of little bugs
 =mail-mta/exim-4.69-r1
@@ -855,7 +1039,7 @@ sys-apps/mindi
 sys-apps/mindi-busybox
 
 # Christian Faulhammer <fauli@gentoo.org> (11 Mar 2008)
-# masked for testing
+# Live SVN ebuild
 =app-portage/gatt-9999
 
 # Doug Goldstein <cardoe@gentoo.org> (10 Mar 2008)
@@ -947,11 +1131,6 @@ sys-fs/redirfs
 # Sebastien Fabbro <bicatali@gentoo.org> (05 Feb 2008)
 # sci-libs/metis-5.* still experimental
 >=sci-libs/metis-4.99
-
-# Wulf C. Krueger <philantrop@gentoo.org> (04 Feb 2008)
-# This package has been pretty much broken since 3.5.6.
-# cf. bug 164027
->=kde-base/pykde-3.5.6
 
 # Ulrich Mueller <ulm@gentoo.org> (01 Feb 2008)
 # Emacs 23 virtual, unmask after Emacs 23 release
@@ -1183,11 +1362,6 @@ sys-power/powersave
 #  Has a hard dependency on wxGTK-2.4 (bug #121818)
 #  Masked until we can update it for 2.6.
 app-pda/plucker
-
-# Bryan Stine <battousai@gentoo.org> (26 Apr 2007)
-# Masked until it works with current baselayout and
-# application locations.
-app-admin/bastille
 
 # Tristan Heaven <nyhm@gentoo.org> (25 Apr 2007)
 # Masked until it's updated to use >=wxpython-2.6
