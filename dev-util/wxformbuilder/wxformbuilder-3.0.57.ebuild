@@ -8,7 +8,7 @@ inherit wxwidgets subversion
 ESVN_REPO_URI="https://wxformbuilder.svn.sourceforge.net/svnroot/wxformbuilder/3.x/tags/3.0"
 ESVN_PROJECT="${PN}"
 
-WX_GTK_VER="2.6"
+WX_GTK_VER="2.8"
 
 DESCRIPTION="The OpenSource Designer, GUI Builder, and RAD Tool For wxWidgets"
 HOMEPAGE="http://www.wxformbuilder.org/"
